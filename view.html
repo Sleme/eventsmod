@@ -1,0 +1,302 @@
+<style type="text/css">
+
+	/* Design */
+
+	.containerContainer {
+
+		border-radius: 20px;
+		background-color: #E0E0E0;
+		display: grid;
+
+		grid-template-columns: 70% 30%;
+		grid-template-areas:
+		"bigContainer smallContainer";
+	}
+
+	.bigContainer {
+		grid-area:bigContainer;
+		height: 100%;
+		width: 100%;
+		background-color: #E0E0E0;
+		border-radius:20px;
+
+		padding:10px;
+	}
+
+	.smallContainer {
+		grid-area:smallContainer;
+
+		height: 100%;
+		width: 100%;
+		background-color: #EEEEEE;
+		border-radius:20px;
+		padding:10px;
+
+	}
+
+
+	.containerContainer > div, .containerContainer > div > div{
+		align-items: center;
+		align-content: center;
+		align-self: center;
+
+	}
+
+	/* Grids */
+
+	.companyData {
+		display:grid;
+		grid-template-columns: 20% 40% 40%;
+		grid-template-rows: 50% 50%;
+
+		grid-template-areas:
+		"pos name day"
+		"pos . value";
+
+	}
+
+	.productData {
+
+		display: grid;
+		grid-template-columns: 20% 40% 40%;
+		grid-template-rows: 50% 50%;
+
+		grid-template-areas:
+		"pos name day"
+		"pos producttype version";
+
+	}
+
+	.contractsGrid {
+
+		display:grid;
+
+		grid-template-columns: 50% 50%;
+		grid-template-rows: 30% 70%;
+
+		grid-template-areas:
+		"provider minutesLeft"
+		"components components";
+	}
+
+	/* Overlays */
+
+	.componentsField {
+		grid-area: components;
+		height: 100%;
+		width: 100%;
+		border-radius: 20px;
+		/*background-color: red;*/
+		padding: 10px;
+	}
+
+	.contractProvider {
+		grid-area: provider;
+	}
+
+	.minutesLeft {
+		grid-area:minutesLeft;
+	}
+
+
+	/* Other */
+
+	.highlightedNumber {
+		color:darkred;
+	}
+
+	/* Buttons */
+
+	.buttonContainer > button {
+		margin-right: 5px;
+	}
+
+	.actionButton {
+		width: 100%;
+		margin-top:2px;
+		margin-bottom: 2px;
+
+	}
+
+	.center {
+		margin: auto;
+		width: 15em;
+	}
+
+	.dontShow {
+
+		display: none;
+	}
+
+	/* Modal */
+
+	.modalContainer {
+		border-radius: 5px;
+		width: 100%;
+		padding:15px;
+		margin-bottom: 10px;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	/* Competitors */
+
+	.competitorContainer {
+		display: flex;
+		flex-flow: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.competitorItem {
+		background-color: #CFD8DC;
+		width: 10em;
+		height: 15em;
+		margin: 5px;
+		padding: 10px;
+		border-radius: 20px;
+		text-align: center;
+
+		display: flex;
+  		flex-direction: column;
+
+  		-webkit-box-shadow: 10px 10px 41px -12px rgba(0,0,0,0.75);
+		-moz-box-shadow: 10px 10px 41px -12px rgba(0,0,0,0.75);
+		box-shadow: 10px 10px 41px -12px rgba(0,0,0,0.75);
+	}
+
+	.competitorItemHighlight {
+		background-color: #ECEFF1;
+		width: 100%;
+
+		padding: 10px;
+		border-radius: 20px;
+		margin-top: auto;
+
+
+	}
+
+	/* No Content */
+
+	.noContentScreen {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		height: 100%;
+	}
+
+	.flex-row {
+		display: flex;
+		/*flex-wrap: wrap;*/
+		flex-direction: row;
+		width: 100%;
+	}
+	.flex-column {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction:column;
+		justify-content: center;
+	}
+
+	/* Marketplace */
+
+	.marketPlaceContainer {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-between;
+		text-align: center;
+		align-content: center;
+
+	}
+
+	.marketPlaceItem {
+		background-color: #ECEFF1;
+		width: 30%;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding: 10px;
+		border-radius: 20px;
+
+		align-self: center;
+	}
+
+	.storageController {
+		display: grid;
+		text-align: left;
+		grid-template-columns: 70% 30%;
+		grid-template-rows: 50% 50%;
+		align-items: center;
+		grid-template-areas:
+		"price buyButton"
+		"storage sellButton";
+	}
+
+	.storageController > button {
+		margin-top: 2px;
+		margin-bottom: 2px;
+	}
+
+</style>
+
+
+
+<h1>
+    <i class="fa fa-gavel">   </i>
+     Legal
+    <i class="fa fa-times pull-right close-button" close-all-ui></i>
+</h1>
+
+<ul class="tab-list" style="width: 100%; display: inline-block;">
+    <li ng-class="{ active: eventsCtrl.tabSelect == 'firsttab' }" ng-click="eventsCtrl.tabSelect = 'firsttab'" >Disputes</li>
+    <li ng-class="{ active: eventsCtrl.tabSelect == 'secondtab' }" ng-click="eventsCtrl.tabSelect = 'secondtab'" >Debug</li>
+</ul>
+
+
+<div class="padding" style="overflow: auto; height: 490px;">
+
+  <div ng-If="eventsCtrl.tabSelect == 'firsttab'">
+<h4>From here you can check your current legal troubles with other companies. You can <b>dispute</b> their legal actions, this will call a judge who will check the peaperwork and decide who is in the right. Or you can <b>pay</b> the company taking legal action and stop having trouble with them.</h4>
+
+      <div ng-if="$root.adisputeishappening == true" class="containerContainer" style="margin-top:5px; margin-bottom: 5px;">
+				<div class="bigContainer">
+					<div class="contractsGrid">
+
+						<div class="componentsField">
+              <div class="contractProvider">
+  							<b>Company: </b> {{$root.ccompany}}
+  						</div>
+
+  						<div class="minutesLeft">
+  							<b>Days left to respond:</b> {{$root.cdays}}
+  						</div>
+						</div>
+					</div>
+				</div>
+				<div class="smallContainer flex-column">
+					<span><b>Amount asking: </b> $ {{$root.camount}}</span>
+
+					<div style="height: auto"></div>
+					<div class="flex-row">
+						<button ng-Click="eventsCtrl.cpaynow()" class="small green actionButton">Pay now</button>
+						<!-- <button  uib-popover="dad" popover-append-to-body="true" popover-trigger="mouseenter" class="small cancel"><i class="fa fa-question"></i></button> -->
+					</div>
+					<button ng-Click="eventsCtrl.cdispute()" class="small red actionButton">Dispute</button>
+				</div>
+			</div>
+</div>
+<div ng-If="eventsCtrl.tabSelect == 'secondtab'">
+      <p><h5>Debug</h5>
+      <p><small>Use this if you want to actually use the mod! The "dice" that rolls is broken right now! <!--This has been left in if you want to try the mod without having to wait for the dice to roll. Dont press it if you don't want trouble ;) -->
+          <p><button class="small" ng-click="eventsCtrl.copyright()">Add copyright event.</button>
+						<button class="small" ng-click="eventsCtrl.FacebookReleased()">Start Facebook event.</button>
+          </div>
+
+<small> Thank you to TupperBox for the css and the whole #modding over at the <a onclick="GetRootScope().openDiscord()">discord</a> server for helping me and having to deal with me! <i class="fa fa-heart"></i></small>
+
+
+
+</div>
